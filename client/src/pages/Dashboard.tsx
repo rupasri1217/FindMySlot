@@ -117,7 +117,7 @@ export default function Dashboard() {
                 FindMySlot
               </span>
               <Badge variant="outline" className="ml-2 text-[10px] py-0 px-1.5 border-blue-500/40 text-blue-600 font-semibold">
-                User Dashboard
+                Dashboard
               </Badge>
             </div>
           </div>

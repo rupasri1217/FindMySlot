@@ -78,7 +78,7 @@ export default function Home() {
               FindMySlot
             </span>
             <Badge variant="outline" className="hidden sm:inline-flex text-[10px] py-0 px-2 border-blue-500/40 text-blue-600 font-semibold">
-              V2 Smart Platform
+              Smart Platform
             </Badge>
           </div>
 
