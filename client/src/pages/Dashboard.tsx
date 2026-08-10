@@ -63,10 +63,12 @@ export default function Dashboard() {
     }
   };
 
+  const [refreshTick, setRefreshTick] = useState(0);
+
   // Fetch bookings & saved places for CURRENT USER ONLY
-  const userBookings = useMemo(() => getUserBookings(user?.email), [user?.email]);
-  const savedPlaces = useMemo(() => getUserSavedPlaces(user?.email), [user?.email]);
-  const allLots = useMemo(() => getAllParkingLots(true), []);
+  const userBookings = useMemo(() => getUserBookings(user?.email), [user?.email, refreshTick]);
+  const savedPlaces = useMemo(() => getUserSavedPlaces(user?.email), [user?.email, refreshTick]);
+  const allLots = useMemo(() => getAllParkingLots(true), [refreshTick]);
 
   const resolvedSavedPlaces = useMemo(() => {
     return savedPlaces.map(sp => {
@@ -91,7 +93,8 @@ export default function Dashboard() {
     if (confirm("Are you sure you want to cancel this active parking reservation?")) {
       cancelUserBooking(bookingId);
       toast.success("Parking reservation cancelled successfully");
-      window.location.reload();
+      setRefreshTick((prev) => prev + 1);
+      navigate("/dashboard");
     }
   };
 

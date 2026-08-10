@@ -102,6 +102,24 @@ function Router() {
       <Route path={"/extend-cancel"}>
         {() => <UserRoute component={ExtendCancelPage} />}
       </Route>
+      <Route path={"/extend-cancel/:id"}>
+        {() => <UserRoute component={ExtendCancelPage} />}
+      </Route>
+      <Route path={"/extend/:id"}>
+        {() => <UserRoute component={ExtendCancelPage} />}
+      </Route>
+      <Route path={"/cancel"}>
+        {() => <UserRoute component={ExtendCancelPage} />}
+      </Route>
+      <Route path={"/cancel/:id"}>
+        {() => <UserRoute component={ExtendCancelPage} />}
+      </Route>
+      <Route path={"/cancel-booking"}>
+        {() => <UserRoute component={ExtendCancelPage} />}
+      </Route>
+      <Route path={"/navigation"}>
+        {() => <UserRoute component={Dashboard} />}
+      </Route>
       <Route path={"/feedback"}>
         {() => <UserRoute component={FeedbackPage} />}
       </Route>

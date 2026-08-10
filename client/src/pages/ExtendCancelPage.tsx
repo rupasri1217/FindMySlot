@@ -6,6 +6,7 @@ import { ArrowLeft, Clock, AlertTriangle, CheckCircle } from "lucide-react";
 import { useLocation, useRoute } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
+import { cancelUserBooking } from "@/services/bookingService";
 
 export default function ExtendCancelPage() {
   const [, navigate] = useLocation();
@@ -50,9 +51,12 @@ export default function ExtendCancelPage() {
   };
 
   const handleCancel = () => {
+    if (booking.id) {
+      cancelUserBooking(booking.id);
+    }
     toast.success("Booking cancelled successfully. Refund initiated.");
     setShowCancelDialog(false);
-    setTimeout(() => navigate("/dashboard"), 2000);
+    navigate("/dashboard");
   };
 
   return (
