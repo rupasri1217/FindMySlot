@@ -171,8 +171,10 @@ export default function Home() {
 
             {/* City Dropdown Selector */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-medium text-slate-500">City:</span>
+              <label htmlFor="hero-city-select" className="text-xs font-medium text-slate-500">City:</label>
               <select
+                id="hero-city-select"
+                aria-label="Select target city"
                 value={selectedCity}
                 onChange={(e) => setSelectedCity(e.target.value)}
                 className="text-xs font-bold bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 outline-none cursor-pointer"
@@ -188,6 +190,8 @@ export default function Home() {
             <div className="md:col-span-8 relative">
               <MapPin className="w-5 h-5 absolute left-3.5 top-3.5 text-blue-500" />
               <input
+                id="hero-destination-input"
+                aria-label="Enter destination"
                 type="text"
                 placeholder="Enter destination (e.g. Cyber City, Central Mall, Metro Station)"
                 value={destination}
@@ -198,6 +202,7 @@ export default function Home() {
 
             <Button
               onClick={handleExploreMap}
+              aria-label="Explore parking facilities on map"
               className="md:col-span-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2"
             >
               <Search className="w-4 h-4" />
@@ -219,6 +224,9 @@ export default function Home() {
               return (
                 <button
                   key={item.id}
+                  type="button"
+                  aria-pressed={isSelected}
+                  aria-label={`Select vehicle mode ${item.label}`}
                   onClick={() => setSelectedCategory(item.id as any)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
                     isSelected
@@ -439,16 +447,16 @@ export default function Home() {
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Send Us a Message</h3>
             <form onSubmit={handleContactSubmit} className="space-y-4">
               <div>
-                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 block">Full Name</label>
-                <input type="text" required placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm" />
+                <label htmlFor="contact-name-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 block">Full Name</label>
+                <input id="contact-name-input" type="text" required placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm" />
               </div>
               <div>
-                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 block">Email Address</label>
-                <input type="email" required placeholder="john@example.com" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm" />
+                <label htmlFor="contact-email-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 block">Email Address</label>
+                <input id="contact-email-input" type="email" required placeholder="john@example.com" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm" />
               </div>
               <div>
-                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 block">Message</label>
-                <textarea required rows={3} placeholder="How can we help you?" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm resize-none"></textarea>
+                <label htmlFor="contact-message-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 block">Message</label>
+                <textarea id="contact-message-input" required rows={3} placeholder="How can we help you?" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm resize-none"></textarea>
               </div>
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl">
                 Send Message

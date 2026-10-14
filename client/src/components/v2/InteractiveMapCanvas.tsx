@@ -69,7 +69,11 @@ export function InteractiveMapCanvas({
   const destinationCoords = { lat: 28.4625, lng: 77.0310 }; // Target Destination
 
   return (
-    <div className={`relative w-full ${heightClass} rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 group`}>
+    <div
+      role="region"
+      aria-label="Interactive parking map canvas"
+      className={`relative w-full ${heightClass} rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 group`}
+    >
       {/* Background Interactive Vector Canvas Simulation */}
       <div className={`absolute inset-0 w-full h-full ${mapStyle === "dark" ? "bg-slate-950" : mapStyle === "satellite" ? "bg-slate-900" : "map-grid-bg"} transition-colors duration-500`}>
         {/* Simulated Map Road Networks */}
@@ -157,9 +161,18 @@ export function InteractiveMapCanvas({
           return (
             <div
               key={lot.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`Select parking facility ${lot.name}, ${avail} slots available, price ₹${price} per hour`}
               onClick={() => onSelectLot(lot)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onSelectLot(lot);
+                }
+              }}
               style={{ left: pos.left, top: pos.top }}
-              className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 z-30 ${
+              className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 z-30 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full ${
                 isSelected ? "scale-110 z-40" : "hover:scale-105"
               }`}
             >
@@ -251,6 +264,7 @@ export function InteractiveMapCanvas({
             onClick={() => setZoomLevel((z) => Math.min(z + 1, 18))}
             className="w-8 h-8 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
             title="Zoom In"
+            aria-label="Zoom in map"
           >
             <Plus className="w-4 h-4" />
           </Button>
@@ -260,6 +274,7 @@ export function InteractiveMapCanvas({
             onClick={() => setZoomLevel((z) => Math.max(z - 1, 10))}
             className="w-8 h-8 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
             title="Zoom Out"
+            aria-label="Zoom out map"
           >
             <Minus className="w-4 h-4" />
           </Button>
@@ -271,6 +286,7 @@ export function InteractiveMapCanvas({
           onClick={() => setMapStyle((s) => (s === "standard" ? "dark" : s === "dark" ? "satellite" : "standard"))}
           className="w-9 h-9 rounded-xl shadow-lg glass-card border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
           title="Toggle Map Style"
+          aria-label="Toggle map view style"
         >
           <Layers className="w-4 h-4" />
         </Button>

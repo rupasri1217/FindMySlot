@@ -12,12 +12,14 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       className="rounded-full w-9 h-9 transition-transform active:scale-95"
       title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (
         <Sun className="w-5 h-5 text-amber-400" />
       ) : (
         <Moon className="w-5 h-5 text-slate-700" />
       )}
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 }

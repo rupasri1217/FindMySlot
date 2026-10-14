@@ -314,10 +314,11 @@ export default function BookingPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <Label className="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                    <Label htmlFor="booking-date-input" className="text-xs font-semibold text-slate-600 dark:text-slate-400">
                       Booking Date *
                     </Label>
                     <Input
+                      id="booking-date-input"
                       type="date"
                       min={todayISO}
                       value={bookingDate}
@@ -327,10 +328,11 @@ export default function BookingPage() {
                   </div>
 
                   <div>
-                    <Label className="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                    <Label htmlFor="booking-start-time-input" className="text-xs font-semibold text-slate-600 dark:text-slate-400">
                       Start Time *
                     </Label>
                     <Input
+                      id="booking-start-time-input"
                       type="time"
                       value={startTimeStr}
                       onChange={(e) => setStartTimeStr(e.target.value)}
@@ -339,10 +341,11 @@ export default function BookingPage() {
                   </div>
 
                   <div>
-                    <Label className="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                    <Label htmlFor="booking-end-time-input" className="text-xs font-semibold text-slate-600 dark:text-slate-400">
                       End Time *
                     </Label>
                     <Input
+                      id="booking-end-time-input"
                       type="time"
                       value={endTimeStr}
                       onChange={(e) => setEndTimeStr(e.target.value)}
@@ -353,8 +356,8 @@ export default function BookingPage() {
 
                 {/* Validation Banner */}
                 {!periodValidation.isValid ? (
-                  <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-xl p-3 text-xs text-red-600 dark:text-red-400 flex items-center gap-2 font-semibold">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
+                  <div role="alert" className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-xl p-3 text-xs text-red-600 dark:text-red-400 flex items-center gap-2 font-semibold">
+                    <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
                     <span>{periodValidation.error}</span>
                   </div>
                 ) : (
@@ -372,10 +375,11 @@ export default function BookingPage() {
               {/* Registration & Destination */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <Label htmlFor="vehicle-reg-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                     Vehicle Registration Number *
                   </Label>
                   <Input
+                    id="vehicle-reg-input"
                     value={vehicleNumber}
                     onChange={(e) => setVehicleNumber(e.target.value.toUpperCase())}
                     placeholder="e.g. TS 09 AB 1234"
@@ -383,10 +387,11 @@ export default function BookingPage() {
                   />
                 </div>
                 <div>
-                  <Label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <Label htmlFor="destination-name-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                     Destination Name
                   </Label>
                   <Input
+                    id="destination-name-input"
                     value={destinationName}
                     onChange={(e) => setDestinationName(e.target.value)}
                     placeholder="Where are you heading?"

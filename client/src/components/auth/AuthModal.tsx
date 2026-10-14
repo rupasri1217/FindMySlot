@@ -82,10 +82,11 @@ export function AuthModal({ isOpen, onClose, defaultRole = "user" }: AuthModalPr
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-1.5">
-            <Label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+            <Label htmlFor="auth-name-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300">
               Full Name (Optional)
             </Label>
             <Input
+              id="auth-name-input"
               type="text"
               placeholder={role === "admin" ? "e.g. Metro Lot Admin" : "e.g. Alex Johnson"}
               value={name}
@@ -95,12 +96,13 @@ export function AuthModal({ isOpen, onClose, defaultRole = "user" }: AuthModalPr
           </div>
 
           <div className="space-y-1.5">
-            <Label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+            <Label htmlFor="auth-email-input" className="text-xs font-semibold text-slate-700 dark:text-slate-300">
               Email Address *
             </Label>
             <div className="relative">
               <Mail className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
               <Input
+                id="auth-email-input"
                 type="email"
                 placeholder={role === "admin" ? "admin@findmyslot.com" : "user@findmyslot.com"}
                 value={email}

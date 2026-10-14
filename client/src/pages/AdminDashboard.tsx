@@ -561,8 +561,9 @@ export default function AdminDashboard() {
           <form onSubmit={handleCreateFacility} className="space-y-4 mt-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Facility Name *</Label>
+                <Label htmlFor="admin-facility-name" className="text-xs text-slate-700 dark:text-slate-300">Facility Name *</Label>
                 <Input
+                  id="admin-facility-name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Metro Hub Smart Deck"
@@ -572,8 +573,10 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">City Location *</Label>
+                <Label htmlFor="admin-facility-city" className="text-xs text-slate-700 dark:text-slate-300">City Location *</Label>
                 <select
+                  id="admin-facility-city"
+                  aria-label="City Location"
                   value={city}
                   onChange={(e) => setCity(e.target.value as any)}
                   className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl mt-1 text-sm p-2.5 font-bold text-slate-900 dark:text-white outline-none"
@@ -588,8 +591,9 @@ export default function AdminDashboard() {
             </div>
 
             <div>
-              <Label className="text-xs text-slate-700 dark:text-slate-300">Full Address *</Label>
+              <Label htmlFor="admin-facility-address" className="text-xs text-slate-700 dark:text-slate-300">Full Address *</Label>
               <Input
+                id="admin-facility-address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="e.g. Block C, Main Commercial Road"
@@ -600,8 +604,9 @@ export default function AdminDashboard() {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Floors</Label>
+                <Label htmlFor="admin-facility-floors" className="text-xs text-slate-700 dark:text-slate-300">Floors</Label>
                 <Input
+                  id="admin-facility-floors"
                   type="number"
                   value={floors}
                   onChange={(e) => setFloors(e.target.value)}
@@ -610,8 +615,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Total Slots</Label>
+                <Label htmlFor="admin-facility-total-slots" className="text-xs text-slate-700 dark:text-slate-300">Total Slots</Label>
                 <Input
+                  id="admin-facility-total-slots"
                   type="number"
                   value={totalSlots}
                   onChange={(e) => setTotalSlots(e.target.value)}
@@ -620,8 +626,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Car Slots</Label>
+                <Label htmlFor="admin-facility-car-slots" className="text-xs text-slate-700 dark:text-slate-300">Car Slots</Label>
                 <Input
+                  id="admin-facility-car-slots"
                   type="number"
                   value={carSlots}
                   onChange={(e) => setCarSlots(e.target.value)}
@@ -630,8 +637,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Bike Slots</Label>
+                <Label htmlFor="admin-facility-bike-slots" className="text-xs text-slate-700 dark:text-slate-300">Bike Slots</Label>
                 <Input
+                  id="admin-facility-bike-slots"
                   type="number"
                   value={bikeSlots}
                   onChange={(e) => setBikeSlots(e.target.value)}
@@ -642,8 +650,9 @@ export default function AdminDashboard() {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">EV Slots</Label>
+                <Label htmlFor="admin-facility-ev-slots" className="text-xs text-slate-700 dark:text-slate-300">EV Slots</Label>
                 <Input
+                  id="admin-facility-ev-slots"
                   type="number"
                   value={evSlots}
                   onChange={(e) => setEvSlots(e.target.value)}
@@ -652,8 +661,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Disabled Slots</Label>
+                <Label htmlFor="admin-facility-disabled-slots" className="text-xs text-slate-700 dark:text-slate-300">Disabled Slots</Label>
                 <Input
+                  id="admin-facility-disabled-slots"
                   type="number"
                   value={disabledSlots}
                   onChange={(e) => setDisabledSlots(e.target.value)}
@@ -662,8 +672,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Car Price (₹/hr)</Label>
+                <Label htmlFor="admin-facility-car-price" className="text-xs text-slate-700 dark:text-slate-300">Car Price (₹/hr)</Label>
                 <Input
+                  id="admin-facility-car-price"
                   type="number"
                   value={pricePerHour}
                   onChange={(e) => setPricePerHour(e.target.value)}
@@ -672,8 +683,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <Label className="text-xs text-slate-700 dark:text-slate-300">Bike Price (₹/hr)</Label>
+                <Label htmlFor="admin-facility-bike-price" className="text-xs text-slate-700 dark:text-slate-300">Bike Price (₹/hr)</Label>
                 <Input
+                  id="admin-facility-bike-price"
                   type="number"
                   value={twoWheelerPricePerHour}
                   onChange={(e) => setTwoWheelerPricePerHour(e.target.value)}

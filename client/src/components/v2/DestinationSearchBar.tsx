@@ -156,8 +156,10 @@ export function DestinationSearchBar({
         {setSelectedCity && (
           <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700">
             <Building2 className="w-4 h-4 text-blue-600" />
-            <span className="text-xs text-slate-500 font-medium">City:</span>
+            <label htmlFor="search-city-select" className="text-xs text-slate-500 font-medium">City:</label>
             <select
+              id="search-city-select"
+              aria-label="Select city"
               value={selectedCity}
               onChange={(e) => {
                 setSelectedCity(e.target.value);
@@ -183,6 +185,8 @@ export function DestinationSearchBar({
             <MapPin className="w-5 h-5" />
           </div>
           <Input
+            id="destination-search-input"
+            aria-label={`Search destination in ${selectedCity}`}
             value={destination}
             onChange={(e) => {
               setDestination(e.target.value);
@@ -263,6 +267,8 @@ export function DestinationSearchBar({
             <Navigation className="w-5 h-5" />
           </div>
           <Input
+            id="current-location-input"
+            aria-label="Your origin location"
             value={currentLocation}
             onChange={(e) => setCurrentLocation(e.target.value)}
             placeholder="Your Location..."
@@ -271,6 +277,7 @@ export function DestinationSearchBar({
           <button
             onClick={handleDetectGPS}
             title="Auto-detect current location via GPS"
+            aria-label="Auto-detect current location via GPS"
             className="absolute right-3 top-3 text-slate-400 hover:text-blue-600 transition-colors p-1"
           >
             <Navigation className={`w-4 h-4 ${isDetecting ? "animate-spin text-blue-600" : ""}`} />
@@ -284,6 +291,7 @@ export function DestinationSearchBar({
               setIsDropdownOpen(false);
               if (onSearch) onSearch();
             }}
+            aria-label="Find available parking slots"
             className="w-full h-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2"
           >
             <Search className="w-4 h-4" />
@@ -294,16 +302,19 @@ export function DestinationSearchBar({
 
       {/* Vehicle Category Selector Pills */}
       <div className="space-y-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block">
+        <span id="vehicle-type-label" className="text-xs font-semibold uppercase tracking-wider text-slate-400 block">
           Select Vehicle Category:
         </span>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div role="group" aria-labelledby="vehicle-type-label" className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {vehicleOptions.map((v) => {
             const Icon = v.icon;
             const isSelected = selectedVehicle === v.id;
             return (
               <button
                 key={v.id}
+                type="button"
+                aria-pressed={isSelected}
+                aria-label={`Select vehicle ${v.label}, average rate ${v.badge}`}
                 onClick={() => setSelectedVehicle(v.id as VehicleType)}
                 className={`flex items-center justify-between p-3 rounded-xl border transition-all text-left ${
                   isSelected
