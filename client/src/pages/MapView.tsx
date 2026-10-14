@@ -34,8 +34,10 @@ export default function MapView() {
   const { user, isAuthenticated, logout } = useAuth();
   const [, navigate] = useLocation();
 
-  // URL query params parse
-  const searchParams = new URLSearchParams(window.location.search);
+  // URL query params parse (supports both standard search and hash location query string)
+  const searchParams = new URLSearchParams(
+    window.location.search || (window.location.hash.includes("?") ? window.location.hash.split("?")[1] : "")
+  );
   const urlCity = searchParams.get("city") as CityName | null;
   const initialDest = searchParams.get("dest") || "";
   const initialType = (searchParams.get("type") as any) || "car";

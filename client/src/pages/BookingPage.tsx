@@ -42,8 +42,10 @@ export default function BookingPage() {
   const [, params] = useRoute("/booking/:slotId");
   const rawSlotParam = params?.slotId || "hyd-01";
 
-  // Extract URL Query Params
-  const queryParams = new URLSearchParams(window.location.search);
+  // Extract URL Query Params (supports both standard search and hash location query string)
+  const queryParams = new URLSearchParams(
+    window.location.search || (window.location.hash.includes("?") ? window.location.hash.split("?")[1] : "")
+  );
   const initialVehicle = (queryParams.get("vehicle") as VehicleType) || "car";
   const initialCity = queryParams.get("city") || "Hyderabad";
   const initialDestination = queryParams.get("dest") || "Central Mall";
